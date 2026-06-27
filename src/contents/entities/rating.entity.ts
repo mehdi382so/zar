@@ -13,7 +13,7 @@ export class Rating extends BaseEntity {
   userId!: number;
 
   @Column({ type: 'smallint' })
-  @Check(`"value" BETWEEN 1 AND 5`)
+  @Check(`value BETWEEN 1 AND 5`)
   value!: number;
 
   @ManyToOne(() => Content)

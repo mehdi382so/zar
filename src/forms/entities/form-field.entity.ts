@@ -16,10 +16,9 @@ export class FormField extends BaseEntity {
   key!: string;
 
   @Column({
-    type: 'enum',
-    enum: FormFieldType,
+    type: 'varchar',
   })
-  type!: FormFieldType;
+  type!: string;
 
   @Column({
     name: 'is_required',
@@ -35,14 +34,24 @@ export class FormField extends BaseEntity {
 
   @Column({
     name: 'validation_rules',
-    type: 'jsonb',
+    type: 'nvarchar',
+    length: 'max',
     nullable: true,
+    transformer: {
+      to: (value: any) => value ? JSON.stringify(value) : null,
+      from: (value: string) => value ? JSON.parse(value) : null,
+    },
   })
   validationRules?: Record<string, any>;
 
   @Column({
-    type: 'jsonb',
+    type: 'nvarchar',
+    length: 'max',
     nullable: true,
+    transformer: {
+      to: (value: any) => value ? JSON.stringify(value) : null,
+      from: (value: string) => value ? JSON.parse(value) : null,
+    },
   })
   options?: Record<string, any>;
 

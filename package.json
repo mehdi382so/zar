@@ -22,7 +22,10 @@
     "migration:run": "npm run typeorm migration:run -- -d ./src/config/typeorm.config.ts",
     "migration:generate": "npm run typeorm -- -d ./src/config/typeorm.config.ts migration:generate ./src/migrations/$npm_config_name",
     "migration:create": "npm run typeorm -- migration:create ./src/migrations/%npm_config_name%",
-    "migration:revert": "npm run typeorm -- -d ./src/config/typeorm.config.ts migration:revert"
+    "migration:revert": "npm run typeorm -- -d ./src/config/typeorm.config.ts migration:revert",
+    "migration:run:mssql": "npm run typeorm migration:run -- -d ./src/config/typeorm-mssql.config.ts",
+    "migration:generate:mssql": "npm run typeorm -- -d ./src/config/typeorm-mssql.config.ts migration:generate ./src/migrations-mssql/$npm_config_name",
+    "migration:revert:mssql": "npm run typeorm -- -d ./src/config/typeorm-mssql.config.ts migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
@@ -31,6 +34,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/typeorm": "^11.0.2",
+    "mssql": "^12.6.0",
     "pg": "^8.22.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",

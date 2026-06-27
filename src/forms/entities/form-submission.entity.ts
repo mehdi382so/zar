@@ -17,11 +17,10 @@ export class FormSubmission extends BaseEntity {
   userId?: number;
 
   @Column({
-    type: 'enum',
-    enum: FormSubmissionStatus,
+    type: 'varchar',
     default: FormSubmissionStatus.PENDING,
   })
-  status!: FormSubmissionStatus;
+  status!: string;
 
   @ManyToOne(
     () => Form,

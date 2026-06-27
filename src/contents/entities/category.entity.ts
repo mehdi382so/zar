@@ -20,7 +20,7 @@ export class Category extends BaseEntity {
     () => Category,
     (category) => category.children,
     {
-      onDelete: 'SET NULL',
+      onDelete: 'NO ACTION',
     },
   )
   @JoinColumn({ name: 'parent_id' })

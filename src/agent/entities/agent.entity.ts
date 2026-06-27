@@ -23,18 +23,17 @@ export class Agent extends BaseEntity {
   @Column({ nullable: true})
   address!: string;
 
-  @Column({ type: 'decimal', nullable: true })
+  @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true })
   latitude?: number;
 
-  @Column({ type: 'decimal', nullable: true })
+  @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true })
   longitude?: number;
 
   @Column({
-    type: 'enum',
-    enum: AgentStatus,
+    type: 'varchar',
     default: AgentStatus.ACTIVE,
   })
-  status!: AgentStatus;
+  status!: string;
 
   @OneToMany(() => AgentUser, (au) => au.agent)
   users!: AgentUser[];

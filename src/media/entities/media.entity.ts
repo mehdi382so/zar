@@ -13,8 +13,8 @@ export class Media extends BaseEntity {
   @Column({ name: 'mime_type' })
   mimeType!: string;
 
-  @Column('bigint')
-  size!: number;
+  @Column({ type: 'bigint' })
+  size!: string;
 
   @Column({ name: 'file_name' })
   fileName!: string;

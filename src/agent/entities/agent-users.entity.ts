@@ -15,11 +15,10 @@ export class AgentUser extends BaseEntity {
 
   @Column({
     name: 'role_in_agent',
-    type: 'enum',
-    enum: AgentUserRole,
+    type: 'varchar',
     default: AgentUserRole.STAFF,
   })
-  roleInAgent!: AgentUserRole;
+  roleInAgent!: string;
 
   @ManyToOne(() => User, {
     onDelete: 'CASCADE',

@@ -8,15 +8,14 @@ export class BlockedIp extends BaseEntity {
   ipAddress!: string;
 
   @Column({
-    type: 'enum',
-    enum: BlockedIpReason,
+    type: 'varchar',
     nullable: true,
   })
-  reason?: BlockedIpReason;
+  reason?: string;
 
   @Column({
     name: 'expires_at',
-    type: 'timestamp',
+    type: 'datetime2',
     nullable: true,
   })
   expiresAt?: Date;

@@ -8,7 +8,6 @@ import { Role } from "./role.entity";
 // Set verified Emails unique
 @Index('users_verified_email_unique', ['email'], {
   unique: true,
-  where: '"email_verified_at" IS NOT NULL',
 })
 export class User extends BaseEntity {
   @Column({
@@ -34,7 +33,7 @@ export class User extends BaseEntity {
   
   @Column({
     name: 'email_verified_at',
-    type: 'timestamp',
+    type: 'datetime2',
     nullable: true,
   })
   emailVerifiedAt?: Date;
@@ -43,15 +42,14 @@ export class User extends BaseEntity {
   phone!: string;
 
   @Column({
-    type: 'enum',
-    enum: UserStatus,
+    type: 'varchar',
     default: UserStatus.ACTIVE,
   })
-  status!: UserStatus;
+  status!: string;
 
   @Column({
     name: 'last_login_at',
-    type: 'timestamp',
+    type: 'datetime2',
     nullable: true,
   })
   lastLoginAt?: Date;
@@ -60,7 +58,6 @@ export class User extends BaseEntity {
     nullable: true,
     onDelete: 'SET NULL',
   })
-
   @JoinColumn({ name: 'profile_image_id' })
   profileImage?: Media;
 
@@ -68,7 +65,6 @@ export class User extends BaseEntity {
     () => Role,
     (role) => role.users,
   )
-
   @JoinTable({
     name: 'user_roles',
     joinColumn: {

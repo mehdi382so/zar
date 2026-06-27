@@ -43,11 +43,10 @@ export class Content extends BaseEntity {
   authorId!: number;
 
   @Column({
-    type: 'enum',
-    enum: ContentStatus,
+    type: 'varchar',
     default: ContentStatus.DRAFT,
   })
-  status!: ContentStatus;
+  status!: string;
 
   @Column({
     name: 'is_featured',
@@ -57,7 +56,7 @@ export class Content extends BaseEntity {
 
   @Column({
     name: 'published_at',
-    type: 'timestamp',
+    type: 'datetime2',
     nullable: true,
   })
   publishedAt?: Date;

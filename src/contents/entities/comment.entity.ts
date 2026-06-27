@@ -22,11 +22,10 @@ export class Comment extends BaseEntity {
   body!: string;
 
   @Column({
-    type: 'enum',
-    enum: CommentStatus,
+    type: 'varchar',
     default: CommentStatus.PENDING,
   })
-  status!: CommentStatus;
+  status!: string;
 
   @ManyToOne(() => Content, (content) => content.comments)
   @JoinColumn({ name: 'content_id' })

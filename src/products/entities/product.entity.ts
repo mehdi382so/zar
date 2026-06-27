@@ -19,11 +19,10 @@ export class Product extends BaseEntity {
   description?: string;
 
   @Column({
-    type: 'enum',
-    enum: ProductStatus,
+    type: 'varchar',
     default: ProductStatus.DRAFT,
   })
-  status!: ProductStatus;
+  status!: string;
 
   @Column({
     name: 'views_count',

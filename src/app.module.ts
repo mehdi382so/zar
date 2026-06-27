@@ -20,11 +20,28 @@ import { AgentModule } from './agent/agent.module';
       isGlobal: true,
       load: [typeormConfig],
     }),
+
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) =>
         configService.get<any>('typeorm'),
     }),
+
+    TypeOrmModule.forRoot({
+      name: 'mssql',
+      type: 'mssql',
+      host: process.env.MSSQL_HOST,
+      port: Number(process.env.MSSQL_PORT),
+      username: process.env.MSSQL_USER,
+      password: process.env.MSSQL_PASS,
+      database: process.env.MSSQL_DATABASE,
+      entities: [],
+      synchronize: false,
+      options: {
+        trustServerCertificate: true,
+      }
+    }),
+
     MediaModule,
     UsersModule,
     AuthModule,

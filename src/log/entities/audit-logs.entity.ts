@@ -23,8 +23,13 @@ export class AuditLog extends BaseEntity {
   entityId!: number;
 
   @Column({
-    type: 'jsonb',
+    type: 'nvarchar',
+    length: 'max',
     nullable: true,
+    transformer: {
+      to: (value: any) => value ? JSON.stringify(value) : null,
+      from: (value: string) => value ? JSON.parse(value) : null,
+    },
   })
   changes?: Record<string, any>;
 

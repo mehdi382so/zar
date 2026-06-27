@@ -22,11 +22,10 @@ export class ContentReport extends BaseEntity {
   description?: string;
 
   @Column({
-    type: 'enum',
-    enum: ReportStatus,
+    type: 'varchar',
     default: ReportStatus.PENDING,
   })
-  status!: ReportStatus;
+  status!: string;
 
   @ManyToOne(() => Content)
   @JoinColumn({ name: 'content_id' })

@@ -12,20 +12,19 @@ export class OtpCode extends BaseEntity {
   codeHash!: string;
 
   @Column({
-    type: 'enum',
-    enum: OtpPurpose,
+    type: 'varchar',
   })
-  purpose!: OtpPurpose;
+  purpose!: string;
 
   @Column({
     name: 'expires_at',
-    type: 'timestamp',
+    type: 'datetime2',
   })
   expiresAt!: Date;
 
   @Column({
     name: 'used_at',
-    type: 'timestamp',
+    type: 'datetime2',
     nullable: true,
   })
   usedAt?: Date;

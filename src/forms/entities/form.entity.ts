@@ -20,11 +20,10 @@ export class Form extends BaseEntity {
   description?: string;
 
   @Column({
-    type: 'enum',
-    enum: FormStatus,
+    type: 'varchar',
     default: FormStatus.DRAFT,
   })
-  status!: FormStatus;
+  status!: string;
 
   @OneToMany(
     () => FormField,
